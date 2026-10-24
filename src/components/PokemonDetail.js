@@ -55,7 +55,7 @@ const PokemonDetail = () => {
                     <span>Peso</span>
                   </div>
                   <div className='type-info'>
-                    <h5>{pokemonData?.types?.[0]?.type.name} / {pokemonData?.types?.[1]?.type.name}</h5>
+                    <h5>{pokemonData?.types?.map(t => t.type.name).join(' / ') || 'N/A'}</h5>
                     <span>Tipo</span>
                   </div>
                   <div className='height-info'>

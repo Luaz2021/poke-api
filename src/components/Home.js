@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import trainer from '../assets/trainer.png'
+import trainer from '../assets/trainer.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setName } from '../redux/actions';
@@ -12,28 +12,35 @@ const Home = () => {
   
   const submit = (e) => {
     e.preventDefault();
-    dispatch(setName(nameUser))
+    const trimmed = nameUser.trim();
+    if (!trimmed) return;
+    dispatch(setName(trimmed));
     navigate('/pokedex');
-  }
+  };
 
-
-  
   return (
-    <section className={`content-home ${theme ? 'darkMode' : 'lightMode' }`}>
+    <section className={`content-home ${theme ? 'darkMode' : 'lightMode'}`}>
       <section className='content'>
           <div className='hero'>
-            <h1>Hola Entrenador!</h1>
-            <img src={trainer} alt="Img Entrenador Pokemón" />
+            <h1>¡Hola Entrenador!</h1>
+            <img src={trainer} alt="Entrenador Pokémon" />
           </div>
           <form className='session-start' onSubmit={submit}>
-            <p>Ingresa tu nombre para iniciar</p>
+            <p>Ingresa tu nombre para iniciar tu aventura</p>
             <div className='flex-row input-group'>
-                <input type="text" className='input-name' onChange={e => setNameUser(e.target.value)} />
-                <input type="submit" value="Entrar"  className='button-start'/>
+                <input 
+                  type="text" 
+                  className='input-name' 
+                  placeholder="Tu nombre de entrenador..."
+                  onChange={e => setNameUser(e.target.value)} 
+                  value={nameUser}
+                  required
+                />
+                <input type="submit" value="Entrar" className='button-start'/>
             </div>
           </form>
       </section>
-     </section>
+    </section>
   );
 };
 

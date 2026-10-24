@@ -183,7 +183,8 @@ export const getBackgroundByType = (type) => {
             return {
                 bgCpGrass: 'bg-cp-grass',
                 bgBgGrass: 'bg-bg-grass',
-                color: 'green'
+                color: 'green',
+                backgroundPerType: 'bgPerGrass'
             }
 
     }
